@@ -124,7 +124,7 @@
 		"context": [{"key": "setting.command_mode"}]
 	},
 
-	{ "keys": ["u"], "command": "undo", "context": [{"key": "setting.command_mode"}] },
+	{ "keys": ["u"], "command": "vintage_undo", "context": [{"key": "setting.command_mode"}] },
 	{
 		"keys": ["ctrl+r"], "command": "redo",
 		"context": [{"key": "setting.command_mode"}, {"key": "setting.vintage_ctrl_keys"}]

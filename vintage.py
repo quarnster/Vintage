@@ -750,6 +750,11 @@ class VisualLowerCase(sublime_plugin.TextCommand):
         self.view.run_command("lower_case")
         self.view.run_command("exit_visual_mode")
 
+class VintageUndo(sublime_plugin.TextCommand):
+    def run(self, edit):
+        self.view.run_command("undo")
+        self.view.sel().clear()
+
 # Sequence is used as part of glue_marked_undo_groups: the marked undo groups
 # are rewritten into a single sequence command, that accepts all the previous
 # commands
