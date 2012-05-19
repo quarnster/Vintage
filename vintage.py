@@ -750,10 +750,13 @@ class VisualLowerCase(sublime_plugin.TextCommand):
         self.view.run_command("lower_case")
         self.view.run_command("exit_visual_mode")
 
-class VintageUndo(sublime_plugin.TextCommand):
-    def run(self, edit):
-        self.view.run_command("undo")
-        self.view.run_command("exit_visual_mode")
+class VintageUndo(sublime_plugin.WindowCommand):
+    def run(self):
+        # Needs to be a window command as running the undo command while the
+        # undo stack is being updated (like being inside of an edit in a
+        # TextCommand) causes problems
+        self.window.active_view().run_command("undo")
+        self.window.active_view().run_command("exit_visual_mode")
 
 # Sequence is used as part of glue_marked_undo_groups: the marked undo groups
 # are rewritten into a single sequence command, that accepts all the previous
